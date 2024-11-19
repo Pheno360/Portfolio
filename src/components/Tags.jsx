@@ -2,7 +2,7 @@ import React from 'react'
 
 const Tags = () => {
   return (
-    <div>
+    <div className=' md:inline-block hidden'>
       
       <div className=' blur-sm hover:blur-0 transition-[2s] h-20 rotate-[8deg] w-[102vw] -ml-4 bg-red-700 text-5xl font-[700] flex gap-10 items-center justify-center '>
         <h1 className=' '>WEB DEVELOPER</h1>

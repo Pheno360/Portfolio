@@ -13,8 +13,8 @@ const About = () => {
             
             scrollTrigger:{
                 trigger:'.text',
-                start: 'top 70%',
-                end: 'bottom 0%',
+                start: 'top 50%',
+                end: 'bottom 5%',
                 scrub: 4,
                 ease: 'power4.inOut'
             }
@@ -33,8 +33,8 @@ const About = () => {
   hoverFillColor='#222'
 />
 </div>
-    <div className=' flex justify-center mt-32  h-screen'>
-    <div className=' absolute text-4xl font-[500] leading-6 italic text-center '>
+    <div className=' flex justify-center md:mt-32 mt-10 h-screen'>
+    <div className=' absolute md:text-4xl text-sm font-[500] md:leading-6 leading-2 italic text-center '>
       <h1 className='text opacity-10'>"Hello! I’m a passionate frontend web developer</h1> <br />
       <h1 className='text opacity-10'>dedicated to creating visually captivating websites</h1> <br />
       <h1 className='text opacity-10'>that not only attract attention but also engage users in meaningful ways.</h1><br /> <br />

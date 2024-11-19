@@ -7,12 +7,14 @@ const Navbar = () => {
 
   const menu=useRef();
 
+  const [greeting, setGreeting] = useState('');
+
   const tl=gsap.timeline();
 
   useGSAP(()=>{
+
     tl.to(menu.current,{
-     transform:"translateX(0%)",
-     duration:1
+     transform:"translateX(0%)"
     })
 
     tl.to('.home',{
@@ -21,13 +23,14 @@ const Navbar = () => {
     })
 
     tl.pause();
-  },)
+  },[])
 
-    const [greeting, setGreeting] = useState('');
 
-    const handleClick=()=>{ 
-      tl.play();
-    }
+    // const handleClick=()=>{
+    //   console.log("aniket");
+       
+    //   tl.play();
+    // }
 
     const handleExit=()=>{
       tl.reverse();
@@ -47,20 +50,18 @@ const Navbar = () => {
         setGreeting('Good night!');
       }
     };
-
     // Call it once when the component mounts
     updateGreeting();
-
     // Update the greeting every hour
     const interval = setInterval(updateGreeting, 3600000);
-
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
   }, []);
+
   return (
     <>
-<div className=' relative z-50'>
-    <div ref={menu} className='menu-bar md:hidden inline-block transform translate-x-[100%]  absolute h-screen w-full overflow-x-hidden  bg-black z-40'>
+<div className=' relative z-50 '>
+    <div ref={menu} className='menu-bar md:hidden inline-block transform translate-x-[100%]   absolute h-screen w-full overflow-x-hidden  bg-black z-40'>
 
     <div onClick={handleExit}  className='close-icon px-2'>
     <h1 className='flex md:hidden absolute z-50 gap-4 items-center w-full font-normal text-[#d9d9d9] text-sm'><img src={AniketLogo} alt='Aniket Patil' className='w-9 h-9 -mt-2' />{greeting}</h1>
@@ -109,18 +110,33 @@ const Navbar = () => {
 
     </div>
 
-    <div  className=' tracking-wide flex md:px-14 px-2 md:mt-8 mt-5 font-semibold text-lg text-white w-full '>
-      <h1 className='flex gap-4  items-center w-full font-normal text-[#d9d9d9] text-sm'><img src={AniketLogo} alt='Aniket Patil' className='w-9 h-9 -mt-2' />{greeting}</h1>
+    <div  className=' tracking-wide flex md:px-14 px-2 md:mt-8 mt-5 font-semibold text-lg text-white w-full'>
+      <h1  className='flex gap-4  items-center w-full font-normal text-[#d9d9d9] text-sm'><img src={AniketLogo} alt='Aniket Patil' className='w-9 h-9 -mt-2' />{greeting}</h1>
 
-      <div onClick={handleClick} className='menu-icon md:hidden flex '>
-      <i  className="ri-menu-3-line text-3xl "></i>
+      <div  className='menu-icon md:hidden flex '>
+      <i onClick={()=>{
+        tl.play();
+      }}  className="ri-menu-3-line text-3xl h-10  "></i>
       </div>
 
       <div className='md:flex hidden justify-end w-full gap-6 text-[#e1dfdf] '>
-      <h1>Home</h1>
-      <h1>About</h1>
-      <h1>Work</h1>
-      <h1>Contact</h1>
+      <h1 onClick={()=>{
+        window.scrollTo(0,0)
+      }}>Home</h1>
+      <h1
+      onClick={()=>{
+        window.scrollTo(800,800)
+      }}>About</h1>
+
+      <h1
+      onClick={()=>{
+        window.scrollTo(3000,3000)
+      }}>Work
+      </h1>
+
+      <h1 onClick={()=>{
+        window.scrollTo(8000,8000)
+      }}>Contact</h1>
       </div>
 
     </div>
